@@ -4,6 +4,7 @@ import Loading from './Loading';
 import Hero from './Hero';
 import Slider from './Slider';
 import Manage from './Manage';
+import BestSeller from './BestSeller';
 
 
 const Home = () => {
@@ -13,8 +14,11 @@ const Home = () => {
             {/* <App></App> */}
             {/* <Loading></Loading> */}
             <Hero></Hero>
-            <Slider></Slider>
+            <BestSeller></BestSeller>
             <Manage></Manage>
+            <Slider></Slider>
+            
+            
         </div>
     );
 };

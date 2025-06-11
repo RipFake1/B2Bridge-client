@@ -2,7 +2,7 @@ import React from 'react';
 
 const Manage = () => {
     return (
-        <div>
+        <div className='my-24'>
             <h2 className='text-6xl text-center font-medium leading-20'>Effectively manage every stage of your <br />B2B wholesale platform</h2>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8'>
