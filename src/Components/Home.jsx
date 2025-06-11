@@ -3,6 +3,7 @@ import App from '../App';
 import Loading from './Loading';
 import Hero from './Hero';
 import Slider from './Slider';
+import Manage from './Manage';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             {/* <Loading></Loading> */}
             <Hero></Hero>
             <Slider></Slider>
+            <Manage></Manage>
         </div>
     );
 };
