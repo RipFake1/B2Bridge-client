@@ -6,12 +6,13 @@ const Hero = () => {
     return (
         <div className='flex flex-col-reverse lg:flex-row justify-between items-center'>
             <div className='w-full lg:w-1/2'>
-                <h1 className='text-5xl text-green-500 font-bold leading-16'>
-                    <span>Simplify Operations</span> <br /> For Your Fast-Growing Brands
+                <h1 className='text-5xl  font-bold leading-16'>
+                    Simplify Operations  For Your <br />  
+                    <span className='text-green-500'>Fast-Growing</span> Brands
                 </h1>
                 <div className='text-2xl mt-8 text-zinc-500'>
                     {/* <span>Where Supply Meets Demand — Effortlessly !!!</span> */}
-                    <p>An end-to-end solution to manage your orders, inventory, shipments and many more !</p>
+                    <p>Where Supply Meets Demand - <span className='underline decoration-green-500'>Effortlessly</span> . An end-to-end solution to manage your orders, inventory, shipments and many more !</p>
                 </div>
             </div>
 
