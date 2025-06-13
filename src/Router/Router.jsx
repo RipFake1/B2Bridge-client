@@ -8,6 +8,8 @@ import Register from "../Components/Register";
 import ErrorPage from "../Components/ErrorPage";
 import Add from "../Components/Add";
 import PrivateRoute from "../provider/PrivateRoute";
+import AllProducts from "../Components/AllProducts";
+import Loading from "../components/Loading";
 
 
 const router = createBrowserRouter([
@@ -26,6 +28,12 @@ const router = createBrowserRouter([
             {
                 path: "/add",
                 element: <PrivateRoute><Add></Add></PrivateRoute>,
+            },
+            {
+                path: "/allProducts",
+                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
+                loader: () => fetch('http://localhost:3000/allproducts'),
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/login",
