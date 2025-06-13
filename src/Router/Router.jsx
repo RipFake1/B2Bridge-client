@@ -6,6 +6,8 @@ import Home from "../Components/Home";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
 import ErrorPage from "../Components/ErrorPage";
+import Add from "../Components/Add";
+import PrivateRoute from "../provider/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
                 // loader: () => fetch('https://roomies-server-seven.vercel.app/roommates'),
                 // hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/add",
+                element: <PrivateRoute><Add></Add></PrivateRoute>,
             },
             {
                 path: "/login",
