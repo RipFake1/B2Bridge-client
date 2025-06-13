@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import NavLinks from './NavLinks';
 import RegistrationButtons from './RegistrationButtons';
+import ProfilePicture from './ProfilePicture';
+import { AuthContext } from '../provider/AuthProvider';
 
 const NavBar = () => {
+
+    const { user } = use(AuthContext);
+    
     return (
         <div className='max-w-[1600px] mx-auto p-4'>
             <div className='flex flex-col gap-2 md:flex-row justify-between items-center sm:px-4 md:px-20 py-8'>
@@ -12,11 +17,9 @@ const NavBar = () => {
                 </div>
 
                 <div className='flex justify-center items-center gap-4'>
-                    {/* {
-                        user ? <ProfilePicture></ProfilePicture> : <SignUpButtons></SignUpButtons>
-                    } */}
-
-                    <RegistrationButtons></RegistrationButtons>
+                    {
+                        user ? <ProfilePicture></ProfilePicture> : <RegistrationButtons></RegistrationButtons>
+                    }
                 </div>
             </div>
              <div className="divider divider-success"></div>
