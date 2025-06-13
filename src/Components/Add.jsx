@@ -3,7 +3,6 @@ import { AuthContext } from '../provider/AuthProvider';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
-
 const Add = () => {
 
     const { user } = use(AuthContext);
@@ -12,10 +11,17 @@ const Add = () => {
 
     const [rating, setRating] = useState('');
 
+    const clearSelect = () => {
+        setRating('');
+
+        const selectOption = document.getElementsByClassName("radioSelect");
+        selectOption.defaultChecked = false;
+        selectOption.Checked = false;
+    };
+
     const handleChangeStar = (e) => {
         setRating(e.target.value);
     };
-
 
     const handleAddProduct = (e) => {
         e.preventDefault();
@@ -38,15 +44,15 @@ const Add = () => {
         // console.log(productName, productPrice, brand, short, total, minimum, image, category, star, productContent);
 
         const newProduct = {
-            productName, 
-            productPrice, 
-            brand, 
-            short, 
-            total, 
-            minimum, 
-            image, 
-            category, 
-            star, 
+            productName,
+            productPrice,
+            brand,
+            short,
+            total,
+            minimum,
+            image,
+            category,
+            star,
             productContent
         };
 
@@ -54,7 +60,7 @@ const Add = () => {
         console.log(newProduct);
 
         //send to DB
-        fetch('http://localhost:3000/products', {
+        fetch('http://localhost:3000/allproducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -77,15 +83,21 @@ const Add = () => {
                     }).then((result) => {
                         if (result.isConfirmed) {
 
-                            // setIsAvailable(true);
-                            // clearLifestyleSelection();
-                            // form.title.value = "";
-                            // form.location.value = "";
-                            // form.rent.value = "";
-                            // form.type.value = "";
-                            // form.description.value = "";
-                            // form.contact.value = "";
+                            form.reset();
+
+                            // form.productName.value = "";
+                            // form.productPrice.value = "";
+                            // form.brand.value = "";
+                            // form.short.value = "";
+                            // form.total.value = "";
+                            // form.minimum.value = "";
+                            // form.image.value = "";
+                            // form.category.value = "";
+                            // form.productContent.value = "";
                             // form.picture.value = "";
+
+                            setRating('');
+                            clearSelect();
 
                             navigate("/add");
                         }
@@ -94,8 +106,6 @@ const Add = () => {
                             navigate("/add");
                         }
                     });
-
-
                 }
             })
 
@@ -153,7 +163,7 @@ const Add = () => {
                                     checked={rating === String(val)}
                                     onChange={handleChangeStar}
                                     required
-                                    className="mask mask-star-2 bg-green-500"
+                                    className="mask mask-star-2 bg-green-500 radioSelect"
                                 />
                             ))}
                         </div>
