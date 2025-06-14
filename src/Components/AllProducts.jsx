@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
-
-import listIcon from '../../public/151867.png';
-import thumbIcon from '../../public/4701000.png';
-
 import AllProductsMiddle from './AllProductsMiddle';
 import AllProductsCards from './AllProductsCards';
-
 
 const AllProducts = () => {
 
     const products = useLoaderData();
     const [list, setList] = useState(true);
-    console.log("List : ", list);
 
     return (
         <div className='max-w-[1600px] mx-auto px-4 lg:px-8 space-y-4 my-8'>
@@ -23,10 +17,10 @@ const AllProducts = () => {
                     <input onClick={() => setList(!list)} type="checkbox" />
 
                     <div className="swap-on">
-                        <img className='w-8 m-2' src={listIcon} alt="" />
+                        <img className='w-8 m-2' src="https://i.ibb.co/84z47d4H/list.png" alt="" />
                     </div>
                     <div className="swap-off">
-                        <img className='w-8 m-2' src={thumbIcon} alt="" />
+                        <img className='w-8 m-2' src="https://i.ibb.co/6p1zWX3/thumbnail.png" alt="" />
                     </div>
                 </label>
             </div>

@@ -8,9 +8,9 @@ const Footer = () => {
                 <img className='h-[36px]' src="https://i.ibb.co/YSyp7DN/black-logo-2.png" alt="" />
                 <div>
                     <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/">Home</NavLink>
-                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/addRoommate">Add</NavLink>
-                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/browseRoommate">Browse</NavLink>
-                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/myListings">My Listings</NavLink>
+                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/add">Add</NavLink>
+                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/allProducts">All Products</NavLink>
+                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/myProducts">My Products</NavLink>
                 </div>
 
                 <div className=' flex justify-center items-center gap-4 text-white'>
@@ -45,7 +45,7 @@ const Footer = () => {
                     </svg>
                 </div>
                 <div>
-                    <p className='text-zinc-500'>Copyright © {new Date().getFullYear()} - All right reserved by B2Bridge Pvt. Ltd. </p>
+                    <p className='text-zinc-300'>Copyright © {new Date().getFullYear()} - All right reserved by B2Bridge Pvt. Ltd. </p>
                 </div>
             </div>
         </div>

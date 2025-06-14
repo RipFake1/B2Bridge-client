@@ -12,7 +12,7 @@ const Hero = () => {
                 </h1>
                 <div className='text-2xl mt-8 text-zinc-500'>
                     {/* <span>Where Supply Meets Demand — Effortlessly !!!</span> */}
-                    <p>Where Supply Meets Demand - <span className='underline decoration-green-500'>Effortlessly</span> . An end-to-end solution to manage your orders, inventory, shipments and many more !</p>
+                    <p> <span className='underline decoration-green-500'>Where Supply Meets Demand - Effortlessly.</span> An end-to-end solution to manage your orders, inventory, shipments and many more !</p>
                 </div>
             </div>
 
