@@ -10,6 +10,7 @@ import Add from "../Components/Add";
 import PrivateRoute from "../provider/PrivateRoute";
 import AllProducts from "../Components/AllProducts";
 import Loading from "../components/Loading";
+import MyProducts from "../Components/MyProducts";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,12 @@ const router = createBrowserRouter([
             {
                 path: "/allProducts",
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
+                loader: () => fetch('http://localhost:3000/allproducts'),
+                hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/myProducts",
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/allproducts'),
                 hydrateFallbackElement: <Loading></Loading>,
             },

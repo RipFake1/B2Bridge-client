@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router';
 
-const AllProductEach = ({ product }) => {
+const MyProductEach = ({ myProduct }) => {
 
-    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = product;
+    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = myProduct;
 
     const starRefs = useRef([]);
 
@@ -70,4 +69,4 @@ const AllProductEach = ({ product }) => {
     );
 };
 
-export default AllProductEach;
+export default MyProductEach;
