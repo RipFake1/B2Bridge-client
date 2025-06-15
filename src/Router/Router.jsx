@@ -11,6 +11,8 @@ import PrivateRoute from "../provider/PrivateRoute";
 import AllProducts from "../Components/AllProducts";
 import Loading from "../components/Loading";
 import MyProducts from "../Components/MyProducts";
+import Categories from "../Components/Categories";
+import ProductDetails from "../Components/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -25,6 +27,18 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
                 // loader: () => fetch('https://roomies-server-seven.vercel.app/roommates'),
                 // hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/categories/:categoryName",
+                element: <Categories></Categories>,
+                // loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
+                // hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/allProducts/:id",
+                element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`),
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/add",

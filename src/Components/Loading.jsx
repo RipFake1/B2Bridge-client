@@ -18,7 +18,7 @@ const Loading = () => {
                 <span className='font-bold text-green-500'>
                     {/* Style will be inherited from the parent element */}
                     <Typewriter
-                        words={['Fetched !', 'Pulled from the server !', 'Loaded !', 'Processed !', 'Arranged !','Filtered !']}
+                        words={['Fetched !', 'Pulled from the server !', 'Loaded !', 'Processed !', 'Arranged !', 'Filtered !']}
                         loop={0}
                         cursor
                         cursorStyle='_'
@@ -29,7 +29,11 @@ const Loading = () => {
                 </span>
             </p>
 
-            <p className='text-5xl text-[#005C99] my-20 mx-2 text-center'>Please wait for a moment !</p>
+            <p className='text-5xl text-[#005C99] my-20 mx-2 text-center'>
+                <span className="loading loading-spinner loading-xl"></span>
+                &nbsp;&nbsp;&nbsp; Please wait for a moment ! &nbsp;&nbsp;&nbsp;
+                <span className="loading loading-spinner loading-xl"></span>
+            </p>
 
         </div>
     );
