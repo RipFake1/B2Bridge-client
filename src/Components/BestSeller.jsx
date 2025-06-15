@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
-
 const BestSeller = () => {
     return (
         <div>
-            <div className='grid grid-cols-2 lg:grid-cols-4 gap-12 bg-green-50 p-16 border-2 border-green-50 shadow-2xl'>
+            <div className='grid grid-cols-2 lg:grid-cols-4 gap-12 bg-emerald-50 p-16 border-2 border-green-50 shadow-2xl'>
                 <div className='col-span-2 p-4'>
                     <h3 className='text-zinc-950 text-4xl font-bold'>
                         Select Categories
@@ -14,8 +12,8 @@ const BestSeller = () => {
                     <p className='text-2xl text-zinc-950 font-medium my-4'>
                         Check all the products in each category !
                     </p>
-                    <Link to="/allProducts">
-                        <button className=' mt-8 border-2 text-green-500 border-green-300  px-8 py-4 rounded-md text-xl font-medium hover:underline hover:cursor-pointer shadow-2xl'>See All Products &#8594;</button>
+                    <Link to="/categories/all">
+                        <button className='mt-8 border-2 text-white bg-green-500 border-green-500  px-16 py-4 rounded-md text-xl font-medium hover:underline hover:cursor-pointer shadow-2xl'>All Categories &#8594;</button>
                     </Link>
                 </div>
 

@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use } from 'react';
 import { useLoaderData } from 'react-router';
 import AllProductsMiddle from './AllProductsMiddle';
 import AllProductsCards from './AllProductsCards';
@@ -18,10 +18,10 @@ const AllProducts = () => {
                     <input onClick={() => setList(!list)} type="checkbox" />
 
                     <div className="swap-on">
-                        <img className='w-8 m-2' src="https://i.ibb.co/84z47d4H/list.png" alt="" />
+                        <img className='w-8 m-2' src={` ${list ?"https://i.ibb.co/6p1zWX3/thumbnail.png" : "https://i.ibb.co/84z47d4H/list.png" }`} alt="" />
                     </div>
                     <div className="swap-off">
-                        <img className='w-8 m-2' src="https://i.ibb.co/6p1zWX3/thumbnail.png" alt="" />
+                        <img className='w-8 m-2' src={` ${list ?"https://i.ibb.co/6p1zWX3/thumbnail.png" : "https://i.ibb.co/84z47d4H/list.png" }`} alt="" />
                     </div>
                 </label>
             </div>

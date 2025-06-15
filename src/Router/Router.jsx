@@ -26,8 +26,8 @@ const router = createBrowserRouter([
                 index: true,
                 path: '/',
                 element: <Home></Home>,
-                // loader: () => fetch('https://roomies-server-seven.vercel.app/roommates'),
-                // hydrateFallbackElement: <Loading></Loading>,
+                loader: () => fetch('http://localhost:3000/allproducts'),
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/categories/:categoryName",
