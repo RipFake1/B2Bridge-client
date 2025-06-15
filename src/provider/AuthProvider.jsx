@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [list, setList] = useState(true);
 
     console.log(user);
 
@@ -51,6 +52,8 @@ const AuthProvider = ({ children }) => {
 
     const authData = {
 
+        list,
+        setList,
         user,
         setUser,
         createUser,

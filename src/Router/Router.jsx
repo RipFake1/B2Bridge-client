@@ -13,6 +13,7 @@ import Loading from "../components/Loading";
 import MyProducts from "../Components/MyProducts";
 import Categories from "../Components/Categories";
 import ProductDetails from "../Components/ProductDetails";
+import UpdateProduct from "../Components/UpdateProduct";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,12 @@ const router = createBrowserRouter([
                 path: "/allProducts",
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/allproducts'),
+                hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/updateProduct/:id",
+                element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {

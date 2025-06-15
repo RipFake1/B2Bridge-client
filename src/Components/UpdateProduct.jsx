@@ -1,34 +1,42 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
-import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
-const Add = () => {
+const UpdateProduct = () => {
 
-    const { user } = use(AuthContext);
+    const singleProduct = useLoaderData();
     const navigate = useNavigate();
-    const myDetails = { name: user.displayName, email: user.email };
+    const { user } = use(AuthContext);
 
-    const [rating, setRating] = useState('');
+    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = singleProduct;
 
-    const clearSelect = () => {
-        setRating('');
+    const [rating, setRating] = useState(star);
 
-        const selectOption = document.getElementsByClassName("radioSelect");
-        selectOption.defaultChecked = false;
-        selectOption.Checked = false;
-    };
+    // console.log(rating);
 
     const handleChangeStar = (e) => {
         setRating(e.target.value);
     };
 
-    const handleAddProduct = (e) => {
+    const starRefs = useRef([]);
+
+    useEffect(() => {
+        starRefs.current.forEach((el) => {
+            if (el) el.removeAttribute('aria-current');
+        });
+
+        const selectedStar = starRefs.current[star - 1];
+        if (selectedStar) {
+            selectedStar.setAttribute('aria-current', 'true');
+        }
+    }, [star]);
+
+
+    const handleEditProduct = (e) => {
         e.preventDefault();
 
         const form = e.target;
-        // console.log(form);
-
         const productName = form.productName.value;
         const productPrice = form.productPrice.value;
         const brand = form.brand.value;
@@ -37,13 +45,12 @@ const Add = () => {
         const minimum = form.minimum.value;
         const image = form.image.value;
         const category = form.category.value;
-        // change later;
         const star = rating;
         const productContent = form.productContent.value;
 
         // console.log(productName, productPrice, brand, short, total, minimum, image, category, star, productContent);
 
-        const newProduct = {
+        const newUpdateProduct = {
             productName,
             productPrice,
             brand,
@@ -56,93 +63,67 @@ const Add = () => {
             productContent
         };
 
-        Object.assign(newProduct, myDetails);
-        console.log(newProduct);
+        // console.log(newUpdateProduct);
 
-        //send to DB
-        fetch('http://localhost:3000/allproducts', {
-            method: 'POST',
+        //updated DB
+        fetch(`http://localhost:3000/allproducts/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newProduct),
+            body: JSON.stringify(newUpdateProduct),
         })
             .then(res => res.json())
             .then(data => {
-
-                if (data.insertedId) {
+                if (data.modifiedCount) {
                     Swal.fire({
                         icon: "success",
-                        title: "Your Product has been added !",
-                        text: "Do you want to add more products ?",
-                        showCancelButton: true,
+                        title: "Product Updated Successfully !",
                         showConfirmButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "YES, Add More rooms!"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-
-                            form.reset();
-
-                            // form.productName.value = "";
-                            // form.productPrice.value = "";
-                            // form.brand.value = "";
-                            // form.short.value = "";
-                            // form.total.value = "";
-                            // form.minimum.value = "";
-                            // form.image.value = "";
-                            // form.category.value = "";
-                            // form.productContent.value = "";
-                            // form.picture.value = "";
-
-                            setRating('');
-                            clearSelect();
-
-                            navigate("/add");
-                        }
-                        else {
-                            navigate("/myProducts");
-                        }
-                    });
+                    })
+                        .then((result) => {
+                            if (result.isConfirmed) {
+                                navigate("/allProducts");
+                            }
+                        });
                 }
             })
-
     }
+
 
     return (
         <div className='max-w-[1600px] mx-auto py-20 flex justify-center items-center'>
             <div className="card w-full max-w-sm shrink-0 shadow-2xl text-[#333333]">
                 <div className="card-body">
-                    <h1 className="text-4xl font-bold text-center">Add Product !</h1>
+                    <h1 className="text-4xl font-bold text-center">Update Product !</h1>
 
-                    <form onSubmit={handleAddProduct} className="fieldset">
+                    <form onSubmit={handleEditProduct} className="fieldset">
 
                         <label className="label text-[#333333]">Product Name</label>
-                        <input type="text" name='productName' className="input text-[#333333]" placeholder="Name" required />
+                        <input type="text" defaultValue={productName} name='productName' className="input text-[#333333]" placeholder="Name" required />
 
                         <label className="label text-[#333333]"> Product Price</label>
-                        <input type="text" name='productPrice' className="input text-[#333333]" placeholder="$ Price $" required />
+                        <input type="text" defaultValue={productPrice} name='productPrice' className="input text-[#333333]" placeholder="$ Price $" required />
 
                         <label className="label text-[#333333]">Brand Name</label>
-                        <input type="text" name='brand' className="input text-[#333333]" placeholder="Brand Name" required />
+                        <input type="text" defaultValue={brand} name='brand' className="input text-[#333333]" placeholder="Brand Name" required />
 
                         <label className="label text-[#333333]">Short Description</label>
-                        <input type="text" name='short' className="input text-[#333333]" placeholder="Short Description" required />
+                        <input type="text" defaultValue={short} name='short' className="input text-[#333333]" placeholder="Short Description" required />
 
                         <label className="label text-[#333333]">Total Quantity</label>
-                        <input type="text" name='total' className="input text-[#333333]" placeholder="Total Quantity" required />
+                        <input type="text" defaultValue={total} name='total' className="input text-[#333333]" placeholder="Total Quantity" required />
 
                         <label className="label text-[#333333]">Minimum Selling Quantity </label>
-                        <input type="text" name='minimum' className="input text-[#333333]" placeholder="Minimum Selling Quantity" required />
+                        <input type="text" defaultValue={minimum} name='minimum' className="input text-[#333333]" placeholder="Minimum Selling Quantity" required />
 
                         <label className="label text-[#333333]">Image</label>
-                        <input type="text" name='image' className="input text-[#333333]" placeholder="Product Image URL" required />
+                        <input type="text" defaultValue={image} name='image' className="input text-[#333333]" placeholder="Product Image URL" required />
 
                         <label className="label text-[#333333]">Category</label>
 
-                        <select defaultValue="" name='category' className="select select-neutral" required>
-                            <option value="" disabled>Category</option>
+                        <select defaultValue={category} name='category' className="select select-neutral" required>
+                            {/* <option value="" disabled>Category</option> */}
                             <option value="clothe">Clothe</option>
                             <option value="furniture">Furniture</option>
                             <option value="jewelry">Jewelry</option>
@@ -200,7 +181,7 @@ const Add = () => {
                         {/* end preference */}
 
                         <label className="label text-[#333333]">Product Content</label>
-                        <textarea name='productContent' className="textarea h-36 text-[#333333]" placeholder="Product Content (100 word max)" required ></textarea>
+                        <textarea defaultValue={productContent} name='productContent' className="textarea h-36 text-[#333333]" placeholder="Product Content (100 word max)" required ></textarea>
 
                         <label className="label text-[#333333]">Email</label>
                         <input type="email" name='email' defaultValue={user.email} className="input cursor-not-allowed" disabled />
@@ -208,7 +189,7 @@ const Add = () => {
                         <label className="label text-[#333333]">Name</label>
                         <input type="text" name='name' defaultValue={user.displayName} className="input cursor-not-allowed" disabled />
 
-                        <button type='submit' className="btn bg-green-500 text-[#333333] mt-4">Add New Product</button>
+                        <button type='submit' className="btn bg-green-500 text-[#333333] mt-4">Update Product !</button>
                     </form>
                 </div>
             </div>
@@ -216,4 +197,4 @@ const Add = () => {
     );
 };
 
-export default Add;
+export default UpdateProduct;

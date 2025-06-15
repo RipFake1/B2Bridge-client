@@ -64,7 +64,9 @@ const AllProductEach = ({ product }) => {
                     ))}
                 </div>
                 <br />
-                <button className="btn btn-outline btn-success my-4">Update Product</button>
+                <Link to={`/updateProduct/${_id}`}>
+                    <button className="btn btn-outline btn-success my-4">Update Product</button>
+                </Link>
             </th>
         </tr>
     );

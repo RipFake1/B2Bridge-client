@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import AllProductsMiddle from './AllProductsMiddle';
 import AllProductsCards from './AllProductsCards';
+import { AuthContext } from '../provider/AuthProvider';
 
 const AllProducts = () => {
 
     const products = useLoaderData();
-    const [list, setList] = useState(true);
+    const { list, setList } =use(AuthContext);
 
     return (
         <div className='max-w-[1600px] mx-auto px-4 lg:px-8 space-y-4 my-8'>
 
             <div className='flex justify-end items-center'>
-                <p className='text-green-500 font-bold text-2xl'>View Type : </p>
+                <p className='text-green-500 font-bold text-2xl'>Change View Type To : </p>
                 <label className="swap">
                     <input onClick={() => setList(!list)} type="checkbox" />
 

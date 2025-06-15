@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router';
 
 const AllProductsCardsEach = ({ product }) => {
 
@@ -49,8 +50,9 @@ const AllProductsCardsEach = ({ product }) => {
                         ></div>
                     ))}
                 </div>
-
-                <button className="btn btn-outline btn-success my-4">Update Product</button>
+                <Link to={`/updateProduct/${_id}`}>
+                    <button className="btn btn-outline btn-success my-4">Update Product</button>
+                </Link>
             </div>
         </div>
     );
