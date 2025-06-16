@@ -14,6 +14,7 @@ import MyProducts from "../Components/MyProducts";
 import Categories from "../Components/Categories";
 import ProductDetails from "../Components/ProductDetails";
 import UpdateProduct from "../Components/UpdateProduct";
+import CartPage from "../Components/CartPage";
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,12 @@ const router = createBrowserRouter([
                 path: "/myProducts",
                 element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/allproducts'),
+                hydrateFallbackElement: <Loading></Loading>,
+            },
+            {
+                path: "/cart",
+                element: <PrivateRoute><CartPage></CartPage></PrivateRoute>,
+                loader: () => fetch('http://localhost:3000/orderProduct'),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {

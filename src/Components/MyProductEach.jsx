@@ -63,7 +63,7 @@ const MyProductEach = ({ myProduct }) => {
                     ))}
                 </div>
                 <br />
-                <button className="btn btn-outline btn-success my-4">Update Product</button>
+                {/* <button className="btn btn-outline btn-success my-4">Update Product</button> */}
             </th>
         </tr>
     );

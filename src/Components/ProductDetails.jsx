@@ -68,9 +68,6 @@ const ProductDetails = () => {
 
         }
 
-
-
-
         setTotalAvailable(calculatedTotal);
 
         const countInfo = {
@@ -121,7 +118,7 @@ const ProductDetails = () => {
                     })
                         .then((result) => {
                             if (result.isConfirmed) {
-                                navigate('/allProducts');
+                                navigate('/cart');
                             }
                         });
                 }
