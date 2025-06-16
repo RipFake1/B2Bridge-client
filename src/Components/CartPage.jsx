@@ -6,6 +6,8 @@ import CartPageEmpty from './CartPageEmpty';
 import CartPageMiddle from './CartPageMiddle';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+
 
 const CartPage = () => {
 
@@ -25,6 +27,11 @@ const CartPage = () => {
 
     return (
         <div className='max-w-[1600px] mx-auto px-4 py-2 lg:py-8'>
+            
+            <Helmet>
+                <title>Cart</title>
+            </Helmet>
+
             {
                 availableCartItems.length === 0 ? <CartPageEmpty></CartPageEmpty> : <CartPageMiddle availableCartItems={availableCartItems} handleRemainingCart={handleRemainingCart}></CartPageMiddle>
             }

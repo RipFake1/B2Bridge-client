@@ -2,6 +2,8 @@ import React, { use, useEffect, useRef, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
+
 
 const UpdateProduct = () => {
 
@@ -93,6 +95,9 @@ const UpdateProduct = () => {
 
     return (
         <div className='max-w-[1600px] mx-auto py-20 flex justify-center items-center'>
+            <Helmet>
+                <title>Update Product</title>
+            </Helmet>
             <div className="card w-full max-w-sm shrink-0 shadow-2xl text-[#333333]">
                 <div className="card-body">
                     <h1 className="text-4xl font-bold text-center">Update Product !</h1>

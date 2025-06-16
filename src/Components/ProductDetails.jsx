@@ -2,6 +2,8 @@ import React, { use, useEffect, useRef, useState } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
+
 
 const ProductDetails = () => {
 
@@ -58,12 +60,11 @@ const ProductDetails = () => {
 
         const calculatedTotal = parseInt(total) - orderQuantity;
 
-        if(calculatedTotal < 0)
-        {
+        if (calculatedTotal < 0) {
             setNotEnoughProductError(`${orderQuantity} items is not Available ! You have to buy less than ${total} products !`);
             return;
         }
-         else {
+        else {
             setNotEnoughProductError("");
 
         }
@@ -127,6 +128,9 @@ const ProductDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>{productName}</title>
+            </Helmet>
             <div className='max-w-[1600px] mx-auto px-4 lg:px-8 space-y-4 my-8' >
                 <div className='flex flex-col gap-10 px-8px'>
 
@@ -241,11 +245,11 @@ const ProductDetails = () => {
 
                                     {
                                         notEnoughProductError && <div className='flex flex-col justify-center items-center gap-2'><p className='text-red-600 text-xl'>{notEnoughProductError}</p>
-                                        
-                                        <p className='text-green-400 text-xl'> Please Visit All Products Page !</p>
-                                        <Link to='/allProducts'>
-                                            <button className='btn btn-success'>All product</button>
-                                        </Link>
+
+                                            <p className='text-green-400 text-xl'> Please Visit All Products Page !</p>
+                                            <Link to='/allProducts'>
+                                                <button className='btn btn-success'>All product</button>
+                                            </Link>
 
                                         </div>
                                     }

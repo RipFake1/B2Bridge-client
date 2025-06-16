@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
-    const { createUser, setUser, updateUser, signInWithGoogle} = use(AuthContext);
+    const { createUser, setUser, updateUser, signInWithGoogle } = use(AuthContext);
     const [nameError, setNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState([]);
@@ -22,7 +22,7 @@ const Register = () => {
         const userEmail = e.target.email.value;
         const userPhoto = e.target.photoUrl.value;
         const userPassword = e.target.password.value;
-        
+
         //name error
         if (userName.length < 5) {
             setNameError("Name should be More than 5 character!");
@@ -119,6 +119,11 @@ const Register = () => {
 
     return (
         <div className='max-w-[1600px] mx-auto py-20 flex justify-center items-center'>
+
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
+
             <div className="card w-full max-w-sm shrink-0 shadow-2xl text-[#333333]">
                 <div className="card-body">
                     <h1 className="text-4xl font-bold text-center">Register now!</h1>
@@ -126,24 +131,24 @@ const Register = () => {
                     <form onSubmit={handleRegister} className="fieldset">
 
                         <label className="label text-[#333333]" >Full Name</label>
-                        <input type="text" name='name' className="input text-[#333333]"  placeholder="Full Name" required />
+                        <input type="text" name='name' className="input text-[#333333]" placeholder="Full Name" required />
 
                         {
                             nameError && <p className='text-red-600'>{nameError}</p>
                         }
 
                         <label className="label text-[#333333]" >Email</label>
-                        <input type="email" name='email' className="input text-[#333333]"  placeholder="Email" required />
+                        <input type="email" name='email' className="input text-[#333333]" placeholder="Email" required />
 
                         {
                             emailError && <p className='text-red-600'>{emailError}</p>
                         }
 
                         <label className="label text-[#333333]" >Photo URL</label>
-                        <input type="text" name='photoUrl' className="input text-[#333333]"  placeholder="Photo URL" required />
+                        <input type="text" name='photoUrl' className="input text-[#333333]" placeholder="Photo URL" required />
 
                         <label className="label text-[#333333]" >Password</label>
-                        <input type="password" name='password' className="input text-[#333333]"  placeholder="Password" required />
+                        <input type="password" name='password' className="input text-[#333333]" placeholder="Password" required />
 
                         {passwordError && passwordError.map((error, index) => (
                             <p key={index} className="text-red-600">{error}</p>

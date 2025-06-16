@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
+
 
 const Login = () => {
 
     const [error, setError] = useState("");
-    const { signIn, signInWithGoogle} = use(AuthContext)
+    const { signIn, signInWithGoogle } = use(AuthContext)
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -60,6 +62,11 @@ const Login = () => {
 
     return (
         <div className='max-w-[1600px] mx-auto py-40 flex justify-center items-center'>
+
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
+
             <div className="card w-full max-w-sm shrink-0 shadow-2xl text-[#333333]">
                 <div className="card-body">
                     <h1 className="text-4xl font-bold text-center">Login now!</h1>

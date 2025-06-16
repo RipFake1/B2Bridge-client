@@ -3,6 +3,8 @@ import { useParams } from 'react-router';
 import CategoriesEmpty from './CategoriesEmpty';
 import CategoriesAllProducts from './CategoriesAllProducts';
 import Loading from './Loading';
+import { Helmet } from 'react-helmet-async';
+
 
 const Categories = () => {
 
@@ -59,6 +61,10 @@ const Categories = () => {
     return (
         <div className='max-w-[1600px] mx-auto px-4 py-2 lg:py-8'>
 
+            <Helmet>
+                <title>Categories</title>
+            </Helmet>
+
             <div className='flex justify-center items-center mb-24'>
                 <div className="join join-vertical lg:join-horizontal">
 
@@ -73,7 +79,7 @@ const Categories = () => {
                     <button onClick={() => handleSort("accessories")} className="btn join-item focus:btn-success">Accessories</button>
 
                     <button onClick={() => handleSort("jewelry")} className="btn join-item focus:btn-success">Jewelry</button>
-                    
+
                     <button onClick={() => handleSort("consumerElectronics")} className="btn join-item focus:btn-success">Consumer Electronics</button>
                 </div>
             </div>

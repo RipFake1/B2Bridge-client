@@ -4,6 +4,8 @@ import AllProductsMiddle from './AllProductsMiddle';
 import AllProductsCards from './AllProductsCards';
 import { AuthContext } from '../provider/AuthProvider';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+
 
 const AllProducts = () => {
 
@@ -20,6 +22,10 @@ const AllProducts = () => {
     return (
         <div className='max-w-[1600px] mx-auto px-4 lg:px-8 space-y-4 my-8'>
 
+            <Helmet>
+                <title>All Products</title>
+            </Helmet>
+            
             <div className='flex justify-between items-center my-12'>
 
                 <button onClick={() => handleMinSaleProduct()} className="btn btn-info">Show Available Products</button>
@@ -32,7 +38,7 @@ const AllProducts = () => {
                     </ul>
                 </div>
             </div>
-            
+
             {/* 
             <div className='flex justify-end items-center'>
                 <p className='text-green-500 font-bold text-2xl'>Change View Type To : </p>
