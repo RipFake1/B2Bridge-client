@@ -1,11 +1,13 @@
 import React, { use, useEffect, useRef, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
 
     const singleProduct = useLoaderData();
     const { user } = use(AuthContext);
+    const navigate = useNavigate();
 
 
     // console.log(singleProduct)
@@ -13,6 +15,10 @@ const ProductDetails = () => {
     const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = singleProduct;
 
     const [orderQuantity, setOrderQuantity] = useState(parseInt(minimum));
+    const [totalAvailable, setTotalAvailable] = useState(parseInt(total));
+
+    const [quantityError, setQuantityError] = useState("");
+    const [notEnoughProductError, setNotEnoughProductError] = useState("");
 
     const starRefs = useRef([]);
 
@@ -29,8 +35,97 @@ const ProductDetails = () => {
     }, [star]);
 
     const handleBuyButton = (e) => {
-        e.preventdefault();
+        e.preventDefault();
 
+        const usersEmail = user.email;
+        const productId = _id;
+        const quantity = orderQuantity;
+        const dateAndTime = new Date();
+
+        // const readable = dateAndTime.toLocaleString();
+
+        // console.log(usersEmail, productId, quantity, dateAndTime);
+
+        //Quantity error
+        if (orderQuantity < parseInt(minimum)) {
+            setQuantityError(`Can't order less than ${parseInt(minimum)} items !`);
+            return;
+        }
+        else {
+            setQuantityError("");
+
+        }
+
+        const calculatedTotal = parseInt(total) - orderQuantity;
+
+        if(calculatedTotal < 0)
+        {
+            setNotEnoughProductError(`${orderQuantity} items is not Available ! You have to buy less than ${total} products !`);
+            return;
+        }
+         else {
+            setNotEnoughProductError("");
+
+        }
+
+
+
+
+        setTotalAvailable(calculatedTotal);
+
+        const countInfo = {
+            total: calculatedTotal,
+        }
+
+        // update total Available
+        fetch(`http://localhost:3000/allproducts/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(countInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log('after update patch', data)
+                console.log(' ');
+            })
+
+        //save to order
+        const newOrder = {
+            usersEmail,
+            productId,
+            quantity,
+            dateAndTime,
+        };
+
+        //Order table POST api
+        fetch('http://localhost:3000/orderProduct', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newOrder),
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.insertedId) {
+
+                    document.getElementById("my_buy_modal").close();
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Successfully Purchased !",
+                        showConfirmButton: true,
+                    })
+                        .then((result) => {
+                            if (result.isConfirmed) {
+                                navigate('/allProducts');
+                            }
+                        });
+                }
+            })
     }
 
     return (
@@ -53,7 +148,7 @@ const ProductDetails = () => {
                     </div>
 
                     <div className='flex flex-col lg:flex-row justify-between w-11/12 lg:w-10/12 mx-auto items-center '>
-                        <h3 className='text-2xl font-medium mb-4'>Total Available:  {total}</h3>
+                        <h3 className='text-2xl font-medium mb-4'>Total Available:  {totalAvailable}</h3>
                         <h3 className='text-2xl font-medium mb-4'>Minimum Order: {minimum}</h3>
                         <h3 className='text-2xl font-medium mb-4'>Price: $ {productPrice} / item</h3>
                     </div>
@@ -133,6 +228,10 @@ const ProductDetails = () => {
                                         }
                                     </p>
 
+                                    {
+                                        quantityError && <p className='text-red-600 text-xl'>{quantityError}</p>
+                                    }
+
                                     <label className="input">
                                         <span className="label">Name</span>
                                         <input type="text" defaultValue={user.displayName} className="input cursor-not-allowed" disabled />
@@ -142,6 +241,17 @@ const ProductDetails = () => {
                                         <span className="label">Email</span>
                                         <input type="text" defaultValue={user.email} className="input cursor-not-allowed" disabled />
                                     </label>
+
+                                    {
+                                        notEnoughProductError && <div className='flex flex-col justify-center items-center gap-2'><p className='text-red-600 text-xl'>{notEnoughProductError}</p>
+                                        
+                                        <p className='text-green-400 text-xl'> Please Visit All Products Page !</p>
+                                        <Link to='/allProducts'>
+                                            <button className='btn btn-success'>All product</button>
+                                        </Link>
+
+                                        </div>
+                                    }
 
                                     <button type='submit' className="btn bg-green-500 text-[#333333] mt-4">Buy Product !</button>
                                 </form>
