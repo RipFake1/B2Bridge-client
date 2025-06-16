@@ -78,7 +78,6 @@ const Categories = () => {
                 </div>
             </div>
 
-
             {
                 products.length === 0 ? <CategoriesEmpty></CategoriesEmpty> : <CategoriesAllProducts products={products}></CategoriesAllProducts>
             }

@@ -37,13 +37,13 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
     }, [productId]);
 
     if (dataLoading) {
-        return <tr><td><Loading></Loading></td></tr>;
+        return <Loading></Loading>;
     }
 
-    const { productName, productPrice, brand, short, total, minimum, image, category, productContent } = eachProducts;
+    const { productName, productPrice, brand, short, total, minimum, image, category } = eachProducts;
 
     const increasedTotal = parseInt(quantity) + parseInt(total);
-    
+
     const countInfo = {
         total: increasedTotal,
     }
@@ -72,7 +72,7 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
                     .then(res => res.json())
                     .then(data => {
                         // console.log('after update patch', data)
-                        console.log(' ');
+                        // console.log(' ');
                     })
 
                 fetch(`http://localhost:3000/orderProduct/${_id}`, {
@@ -101,48 +101,32 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
 
 
     return (
-        <tr>
-            <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                            <img
-                                src={image}
-                                alt="Avatar Tailwind CSS Component" />
-                        </div>
-                    </div>
-                    <div>
-                        <div className="font-bold">{productName}</div>
-                        <div className="text-sm">{brand}</div>
-                        <div className="text-sm opacity-50 capitalize">{category}</div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <span className='font-medium'>{short}</span>
-                <br />
-                {productContent}
 
-            </td>
-            <td>
-                Total Available: {total}
-                <br />
-                Minimum Selling Quantity: {minimum}
-                <br />
-                <span className="badge badge-ghost badge-sm">Price: $ {productPrice}/ item</span>
-            </td>
+        <div className="card bg-base-100 shadow-sm">
+            <figure className="px-10 pt-10">
+                <img
+                    src={image}
+                    alt=""
+                    className="rounded-xl m-2 w-32" />
+            </figure>
+            <div className="card-body items-center text-center">
+                <h2 className="card-title text-3xl">{productName}</h2>
 
-            <td>Buyer Email : {usersEmail}
-                <br />
-                Buying Quantity: {quantity}
-                <br />
-                <span className="badge badge-ghost badge-sm">{formattedDate}</span>
-            </td>
+                <p className='text-2xl'>Brand: {brand}</p>
+                <p className='capitalize text-2xl'>Category: {category}</p>
 
-            <th>
+
+                <p className='text-xl'>{short}</p>
+                <p className='text-xl'>Total Available: {total}</p>
+                <p className='text-xl'>Minimum Sell: {minimum}</p>
+                <p className='text-xl'>Price: $ {productPrice} / item</p>
+                <p className='text-xl font-semibold'>Buyer Email : {usersEmail}</p>
+                <p className='text-xl font-semibold'>Buying Quantity: {quantity}</p>
+                <p className='text-xl font-semibold'>Time : {formattedDate}</p>
+                <br />
                 <button onClick={() => handleDelete(_id)} className="btn btn-outline btn-error my-4">Delete Product</button>
-            </th>
-        </tr>
+            </div>
+        </div>
     );
 };
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const CategoriesAllProductsEach = ({ product }) => {
 
-    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = product;
+    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star } = product;
 
     const starRefs = useRef([]);
 
@@ -21,39 +21,28 @@ const CategoriesAllProductsEach = ({ product }) => {
 
 
     return (
-        <tr>
-            <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                            <img
-                                src={image}
-                                alt="Avatar Tailwind CSS Component" />
-                        </div>
-                    </div>
-                    <div>
-                        <div className="font-bold">{productName}</div>
-                        <div className="text-sm">{brand}</div>
-                        <div className="text-sm opacity-50 capitalize">{category}</div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <span className='font-medium'>{short}</span>
-                <br />
-                {productContent}
 
-            </td>
-            <td>
-                Total Available: {total}
-                <br />
-                Minimum Selling Quantity: {minimum}
-                <br />
-                <span className="badge badge-ghost badge-sm">Price: $ {productPrice}/ item</span>
-            </td>
+        <div className="card bg-base-100 shadow-sm">
+            <figure className="px-10 pt-10">
+                <img
+                    src={image}
+                    alt=""
+                    className="rounded-xl m-2 w-32" />
+            </figure>
+            <div className="card-body items-center text-center">
+                <h2 className="card-title text-3xl">{productName}</h2>
 
-            <th>
-                <div className="rating">
+                <p className='text-2xl'>Brand: {brand}</p>
+                <p className='capitalize text-2xl'>Category: {category}</p>
+
+
+                <p className='text-xl'>{short}</p>
+                <p className='text-xl'>Total Available: {total}</p>
+                <p className='text-xl'>Minimum Sell: {minimum}</p>
+                <p className='text-xl'>Price: $ {productPrice} / item</p>
+
+                <br />
+                <div className="rating mb-8">
                     {[1, 2, 3, 4, 5].map((val, index) => (
                         <div
                             key={val}
@@ -64,12 +53,13 @@ const CategoriesAllProductsEach = ({ product }) => {
                         ></div>
                     ))}
                 </div>
-                <br />
+
                 <Link to={`/allProducts/${_id}`}>
                     <button className="btn btn-outline btn-success my-4">Product Details</button>
                 </Link>
-            </th>
-        </tr>
+
+            </div>
+        </div>
     );
 };
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const BestSeller = () => {
     return (
         <div>
-            <div className='grid grid-cols-2 lg:grid-cols-4 gap-12 bg-emerald-50 p-16 border-2 border-green-50 shadow-2xl'>
+            <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-12 bg-emerald-50 p-4 lg:p-16 border-2 border-green-50 shadow-2xl'>
                 <div className='col-span-2 p-4'>
                     <h3 className='text-zinc-950 text-4xl font-bold'>
                         Select Categories

@@ -25,7 +25,7 @@ const HeroProducts = ({ products }) => {
     }
 
     return (
-        <div className='py-12 px-12 my-24 bg-emerald-50 shadow-2xl rounded-2xl'>
+        <div className='p-2 lg:p-12 my-24 bg-emerald-50 shadow-2xl rounded-2xl'>
             
             <h3 className='text-5xl font-bold text-center py-12'>Find the right products for <br />  your store — <span className='text-green-500'>easily !</span></h3>
 
