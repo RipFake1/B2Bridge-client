@@ -6,11 +6,13 @@ const Footer = () => {
         <div className='max-w-[1600px] mx-auto'>
             <div className='flex flex-col gap-4 justify-between items-center px-20 py-20 bg-[#333333]'>
                 <img className='h-[36px]' src="https://i.ibb.co/YSyp7DN/black-logo-2.png" alt="" />
-                <div>
+                <div className='flex flex-col lg:flex-row justify-center items-center'>
                     <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/">Home</NavLink>
+                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/categories/all">Categories</NavLink>
                     <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/add">Add</NavLink>
                     <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/allProducts">All Products</NavLink>
                     <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/myProducts">My Products</NavLink>
+                    <NavLink className="mr-5 text-lg text-white hover:underline decoration-2" to="/cart">Cart Page</NavLink>
                 </div>
 
                 <div className=' flex justify-center items-center gap-4 text-white'>
@@ -45,7 +47,7 @@ const Footer = () => {
                     </svg>
                 </div>
                 <div>
-                    <p className='text-zinc-300'>Copyright © {new Date().getFullYear()} - All right reserved by B2Bridge Pvt. Ltd. </p>
+                    <p className='text-zinc-300 text-center'>Copyright © {new Date().getFullYear()} - All right reserved by B2Bridge Pvt. Ltd. </p>
                 </div>
             </div>
         </div>
