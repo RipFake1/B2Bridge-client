@@ -12,7 +12,7 @@ const Faq = () => {
                 </div>
 
                 <div>
-                    <h2 className='text-5xl font-bold mb-8'>Frequently Asked Questions</h2>
+                    <h2 className='text-5xl font-bold mb-8 text-emerald-500'>Frequently Asked Questions</h2>
                     <p className='font-normal text-2xl'>If you have a question or need some help, <br />please take a moment to read through our Frequently Asked Questions.</p>
                 </div>
 

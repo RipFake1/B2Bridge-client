@@ -40,7 +40,7 @@ const AllProductEach = ({ product }) => {
             <td>
                 <span className='font-medium'>{short}</span>
                 <br />
-                {productContent}
+                {/* {productContent} */}
 
             </td>
             <td>
