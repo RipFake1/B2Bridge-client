@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
 
-            if (currentUser?.email) {
+            if (currentUser) {
                 const userData = { email: currentUser.email };
 
                 axios.post('https://btobridge-server.vercel.app/jwt', userData, {
