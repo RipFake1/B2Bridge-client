@@ -29,7 +29,6 @@ const Hero = () => {
             <div className='w-full lg:w-1/2'>
                 <Lottie animationData={hero_shopping} />
             </div>
-
         </div>
     );
 };

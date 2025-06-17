@@ -23,7 +23,6 @@ const Slider = () => {
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
 
-
     return (
         <div className='mb-2 lg:mb-20 my-16'>
             <div>
@@ -54,7 +53,6 @@ const Slider = () => {
                 </Swiper>
             </div>
         </div>
-
     );
 };
 

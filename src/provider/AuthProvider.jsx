@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState(true);
 
-    console.log(user);
+    // console.log(user);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -52,21 +52,9 @@ const AuthProvider = ({ children }) => {
                     withCredentials: true,
                 })
                     .then(res => {
-                        console.log(res.data)
+                        // console.log(res.data)
                     })
                     .catch(error => console.log(error));
-
-
-                // axios.post('http://localhost:3000/jwt', userData)
-                // .then(res => {
-                //     console.log('token after jwt', res.data);
-                //     const token = res.data.token;
-                //     // to save in the browser
-                //     // localStorage.setItem('token', token);
-                // })
-                // .catch(error => {
-                //     console.log(error);
-                // })
             }
         });
         return () => {

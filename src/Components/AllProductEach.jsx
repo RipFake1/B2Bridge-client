@@ -33,13 +33,13 @@ const AllProductEach = ({ product }) => {
                     <div>
                         <div className="font-bold">{productName}</div>
                         <div className="text-sm">{brand}</div>
-                        <div className="text-sm opacity-50 capitalize">{category}</div>
                     </div>
                 </div>
             </td>
             <td>
-                <span className='font-medium'>{short}</span>
-                <br />
+                <div className="font-semibold capitalize">{category}</div>
+                
+                <p className='font-medium'>{short}</p>
                 {/* {productContent} */}
 
             </td>

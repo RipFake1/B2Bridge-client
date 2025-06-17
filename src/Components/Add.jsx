@@ -28,7 +28,6 @@ const Add = () => {
         e.preventDefault();
 
         const form = e.target;
-        // console.log(form);
 
         const productName = form.productName.value;
         const productPrice = form.productPrice.value;
@@ -38,11 +37,9 @@ const Add = () => {
         const minimum = form.minimum.value;
         const image = form.image.value;
         const category = form.category.value;
-        // change later;
+
         const star = rating;
         const productContent = form.productContent.value;
-
-        // console.log(productName, productPrice, brand, short, total, minimum, image, category, star, productContent);
 
         const newProduct = {
             productName,
@@ -58,7 +55,6 @@ const Add = () => {
         };
 
         Object.assign(newProduct, myDetails);
-        console.log(newProduct);
 
         //send to DB
         fetch('http://localhost:3000/allproducts', {

@@ -1,7 +1,6 @@
 import React from 'react';
-import Lottie from "lottie-react";
 import { Typewriter } from 'react-simple-typewriter'
-
+import Lottie from "lottie-react";
 import loading_Truck from "../assets/loading_truck.json"
 
 const Loading = () => {

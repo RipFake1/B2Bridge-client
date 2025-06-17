@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const SliderThree = () => {
     return (
         <div className='flex flex-col md:flex-row justify-center items-center'>

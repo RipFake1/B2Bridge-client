@@ -11,9 +11,6 @@ const ProductDetails = () => {
     const { user } = use(AuthContext);
     const navigate = useNavigate();
 
-
-    // console.log(singleProduct)
-
     const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = singleProduct;
 
     const [orderQuantity, setOrderQuantity] = useState(parseInt(minimum));
@@ -43,10 +40,6 @@ const ProductDetails = () => {
         const productId = _id;
         const quantity = orderQuantity;
         const dateAndTime = new Date();
-
-        // const readable = dateAndTime.toLocaleString();
-
-        // console.log(usersEmail, productId, quantity, dateAndTime);
 
         //Quantity error
         if (orderQuantity < parseInt(minimum)) {
@@ -135,7 +128,6 @@ const ProductDetails = () => {
             </Helmet>
             <div className='max-w-[1600px] mx-auto px-4 lg:px-8 space-y-4 my-8' >
                 <div className='flex flex-col gap-10 px-8px'>
-
 
                     <div className='flex flex-col lg:flex-row justify-center items-center gap-8 mx-auto'>
                         <div className='border-2 rounded-2xl border-green-300'>

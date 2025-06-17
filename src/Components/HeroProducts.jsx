@@ -5,15 +5,9 @@ import { motion } from "motion/react"
 
 const HeroProducts = ({ products }) => {
 
-    // const [sort, setSort] = useState("");
     const [show, setShow] = useState([]);
 
-    // const allProducts = use(products);
-    // console.log(allBills);
-    // setDisplayPhones(phones.slice(0, 6))
-
     useEffect(() => {
-        // setShow(products.filter(singleProducts => singleProducts.category === 'clothe'));
         handleProducts('clothe');
     }, [])
 

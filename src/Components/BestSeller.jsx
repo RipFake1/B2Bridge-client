@@ -63,7 +63,6 @@ const BestSeller = () => {
                         <img className='w-64 p-4' src="https://i.ibb.co/Kjgk0fRD/camera.png" alt="" />
                     </Link>
                 </div>
-
             </div>
         </div>
     );

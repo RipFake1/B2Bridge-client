@@ -33,7 +33,6 @@ const AllProductsCardsEach = ({ product }) => {
                 <p className='text-2xl'>Brand: {brand}</p>
                 <p className='capitalize text-2xl'>Category: {category}</p>
 
-
                 <p className='text-xl'>{short}</p>
                 <p className='text-xl'>Total: {total}</p>
                 <p className='text-xl'>Minimum Sell: {minimum}</p>

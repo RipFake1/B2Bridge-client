@@ -1,5 +1,4 @@
 import React from 'react';
-import App from '../App';
 import Hero from './Hero';
 import Slider from './Slider';
 import Manage from './Manage';
@@ -20,15 +19,12 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
 
-            {/* <App></App> */}
-
             <Hero></Hero>
             <BestSeller></BestSeller>
             <HeroProducts products={products}></HeroProducts>
             <Manage></Manage>
             <Slider></Slider>
             <Faq></Faq>
-
 
         </div>
     );
