@@ -1,3 +1,3 @@
 export const categoriesPromise = category => {
-    return fetch(`http://localhost:3000/categories?category=${category}`).then(res => res.json());
+    return fetch(`https://btobridge-server.vercel.app/categories?category=${category}`).then(res => res.json());
 }

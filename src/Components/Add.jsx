@@ -57,7 +57,7 @@ const Add = () => {
         Object.assign(newProduct, myDetails);
 
         //send to DB
-        fetch('http://localhost:3000/allproducts', {
+        fetch('https://btobridge-server.vercel.app/allproducts', {
             method: 'POST',
             credentials: 'include',
             headers: {

@@ -27,7 +27,7 @@ const router = createBrowserRouter([
                 index: true,
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/publicAllProducts'),
+                loader: () => fetch('https://btobridge-server.vercel.app/publicAllProducts'),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {
                 path: "/allProducts/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`, {
+                loader: ({ params }) => fetch(`https://btobridge-server.vercel.app/allproducts/${params.id}`, {
                     method: 'GET',
                     credentials: 'include',
                 }),
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             {
                 path: "/allProducts",
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/allproducts', {
+                loader: () => fetch('https://btobridge-server.vercel.app/allproducts', {
                     method: 'GET',
                     credentials: 'include',
                 }),
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
             {
                 path: "/updateProduct/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`, {
+                loader: ({ params }) => fetch(`https://btobridge-server.vercel.app/allproducts/${params.id}`, {
                     method: 'GET',
                     credentials: 'include',
                 }),
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             {
                 path: "/myProducts",
                 element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/allproducts', {
+                loader: () => fetch('https://btobridge-server.vercel.app/allproducts', {
                     method: 'GET',
                     credentials: 'include',
                 }),
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <PrivateRoute><CartPage></CartPage></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/orderProduct', {
+                loader: () => fetch('https://btobridge-server.vercel.app/orderProduct', {
                     method: 'GET',
                     credentials: 'include',
                 }),

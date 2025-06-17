@@ -62,7 +62,7 @@ const UpdateProduct = () => {
         };
 
         //updated DB
-        fetch(`http://localhost:3000/allproducts/${_id}`, {
+        fetch(`https://btobridge-server.vercel.app/allproducts/${_id}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {

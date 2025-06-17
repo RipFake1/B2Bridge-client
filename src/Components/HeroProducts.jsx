@@ -12,11 +12,15 @@ const HeroProducts = ({ products }) => {
     }, [])
 
     const handleProducts = (type) => {
-        setShow(products.filter(singleProducts => singleProducts.category === type));
-        if (show.length > 3) {
-            setShow(show.slice(0, 3))
-        }
-        return;
+        // setShow(products.filter(singleProducts => singleProducts.category === type));
+        // if (show.length > 3) {
+        //     setShow(show.slice(0, 3))
+        // }
+        // return;
+
+        const filtered = products.filter(product => product.category === type);
+        const limited = filtered.length > 3 ? filtered.slice(0, 3) : filtered;
+        setShow(limited);
     }
 
     return (

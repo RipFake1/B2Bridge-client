@@ -25,7 +25,7 @@ const Categories = () => {
     const fetchAllProducts = async () => {
         setDataLoading(true);
         try {
-            const response = await fetch('http://localhost:3000/publicAllProducts');
+            const response = await fetch('https://btobridge-server.vercel.app/publicAllProducts');
             const data = await response.json();
             setProducts(data);
         } catch (error) {
@@ -39,7 +39,7 @@ const Categories = () => {
     const fetchProducts = async (categoryName) => {
         setDataLoading(true);
         try {
-            const response = await fetch(`http://localhost:3000/categories?category=${categoryName}`);
+            const response = await fetch(`https://btobridge-server.vercel.app/categories?category=${categoryName}`);
             const data = await response.json();
             setProducts(data);
         } catch (error) {

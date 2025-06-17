@@ -69,7 +69,7 @@ const ProductDetails = () => {
         }
 
         // update total Available
-        fetch(`http://localhost:3000/allproducts/${_id}`, {
+        fetch(`https://btobridge-server.vercel.app/allproducts/${_id}`, {
             method: 'PATCH',
             credentials: 'include',
             headers: {
@@ -92,7 +92,7 @@ const ProductDetails = () => {
         };
 
         //Order table POST api
-        fetch('http://localhost:3000/orderProduct', {
+        fetch('https://btobridge-server.vercel.app/orderProduct', {
             method: 'POST',
             credentials: 'include',
             headers: {

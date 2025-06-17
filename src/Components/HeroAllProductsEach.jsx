@@ -22,7 +22,7 @@ const HeroAllProductsEach = ({ singleProduct }) => {
 
     return (
         <div>
-            <div className='flex flex-col justify-center items-center gap-10 px-8px p-4 border-2 border-green-500 m-4 rounded-sm'>
+            <div className='flex flex-col h-full justify-center items-center gap-10 px-8px p-4 border-2 border-green-500 m-4 rounded-sm'>
 
                 <div>
                     <img className='w-[240px] h-[240px] object-cover p-4 rounded-2xl' src={image} alt="" />

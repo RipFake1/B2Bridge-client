@@ -18,7 +18,7 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
     const fetchEachProduct = async (productId) => {
         setDataLoading(true);
         try {
-            const response = await fetch(`http://localhost:3000/allproducts/${productId}`, {
+            const response = await fetch(`https://btobridge-server.vercel.app/allproducts/${productId}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -62,7 +62,7 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
             if (result.isConfirmed) {
 
                 // update total Available
-                fetch(`http://localhost:3000/allproducts/${productId}`, {
+                fetch(`https://btobridge-server.vercel.app/allproducts/${productId}`, {
                     method: 'PATCH',
                     credentials: 'include',
                     headers: {
@@ -76,7 +76,7 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
                         // console.log(' ');
                     })
 
-                fetch(`http://localhost:3000/orderProduct/${_id}`, {
+                fetch(`https://btobridge-server.vercel.app/orderProduct/${_id}`, {
                     method: 'DELETE',
                     credentials: 'include',
                 })
