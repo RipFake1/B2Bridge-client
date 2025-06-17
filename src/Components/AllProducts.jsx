@@ -10,7 +10,6 @@ import { Helmet } from 'react-helmet-async';
 const AllProducts = () => {
 
     const allProducts = useLoaderData();
-    // console.log(allProducts);
     const { list, setList } = use(AuthContext);
     const [products, setProducts] = useState(allProducts);
 
@@ -38,6 +37,8 @@ const AllProducts = () => {
                     </ul>
                 </div>
             </div>
+
+            {/* thumbnail or list code down with image */}
 
             {/* 
             <div className='flex justify-end items-center'>

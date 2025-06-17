@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const AllProductEach = ({ product }) => {
 
-    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star, productContent } = product;
+    const { _id, productName, productPrice, brand, short, total, minimum, image, category, star } = product;
 
     const starRefs = useRef([]);
 

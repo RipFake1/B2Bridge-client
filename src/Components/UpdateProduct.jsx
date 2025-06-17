@@ -15,8 +15,6 @@ const UpdateProduct = () => {
 
     const [rating, setRating] = useState(star);
 
-    // console.log(rating);
-
     const handleChangeStar = (e) => {
         setRating(e.target.value);
     };
@@ -50,8 +48,6 @@ const UpdateProduct = () => {
         const star = rating;
         const productContent = form.productContent.value;
 
-        // console.log(productName, productPrice, brand, short, total, minimum, image, category, star, productContent);
-
         const newUpdateProduct = {
             productName,
             productPrice,
@@ -65,11 +61,10 @@ const UpdateProduct = () => {
             productContent
         };
 
-        // console.log(newUpdateProduct);
-
         //updated DB
         fetch(`http://localhost:3000/allproducts/${_id}`, {
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             },
@@ -152,38 +147,6 @@ const UpdateProduct = () => {
                                 />
                             ))}
                         </div>
-
-
-                        {/* start preference */}
-
-                        {/* <label className="label text-[#333333]">
-                            <input id="myInputOne" type="checkbox"
-                                className="checkbox checkbox-neutral"
-                                value="No pets"
-                            // onChange={handleCheckboxChange}
-                            />
-                            No pets
-                        </label>
-
-                        <label className="label text-[#333333]">
-                            <input id="myInputTwo" type="checkbox"
-                                className="checkbox checkbox-neutral"
-                                value="Non Smokers"
-                            // onChange={handleCheckboxChange}
-                            />
-                            Non Smokers
-                        </label>
-
-                        <label className="label text-[#333333]">
-                            <input id="myInputThree" type="checkbox"
-                                className="checkbox checkbox-neutral"
-                                value="Night Owl"
-                            // onChange={handleCheckboxChange}
-                            />
-                            Night Owl
-                        </label> */}
-
-                        {/* end preference */}
 
                         <label className="label text-[#333333]">Product Content</label>
                         <textarea defaultValue={productContent} name='productContent' className="textarea h-36 text-[#333333]" placeholder="Product Content (100 word max)" required ></textarea>

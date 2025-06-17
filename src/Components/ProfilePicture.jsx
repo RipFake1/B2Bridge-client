@@ -12,6 +12,7 @@ const ProfilePicture = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
+                localStorage.removeItem("token");
                 navigate('/');
             }).catch((error) => {
                 toast.error(`ERROR - ${error.message} `);
@@ -22,7 +23,7 @@ const ProfilePicture = () => {
         <div className="dropdown dropdown-center md:dropdown-end">
             <div tabIndex={0} role="button" className="m-1">
 
-                <img id="tooltipHover" className="w-[40px] h-[40px] rounded-full border-2 border-[#005C99]" src={`${user.photoURL ? user.photoURL : "https://i.ibb.co/bjvNNZsL/developer-512.jpg"}`} alt="" />
+                <img id="tooltipHover" className="w-[40px] h-[40px] rounded-full border-2 border-green-500" src={`${user.photoURL ? user.photoURL : "https://i.ibb.co/bjvNNZsL/developer-512.jpg"}`} alt="" />
             </div>
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                 {/* <li><p className='btn btn-outline  btn-neutral btn-active mb-2'>{user.displayName ? user.displayName : "¯\\_(ツ)_/¯"}</p></li> */}

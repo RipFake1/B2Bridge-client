@@ -78,6 +78,7 @@ const ProductDetails = () => {
         // update total Available
         fetch(`http://localhost:3000/allproducts/${_id}`, {
             method: 'PATCH',
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             },
@@ -100,6 +101,7 @@ const ProductDetails = () => {
         //Order table POST api
         fetch('http://localhost:3000/orderProduct', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             },

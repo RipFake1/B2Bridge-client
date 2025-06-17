@@ -63,6 +63,7 @@ const Add = () => {
         //send to DB
         fetch('http://localhost:3000/allproducts', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             },

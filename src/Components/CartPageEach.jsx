@@ -9,11 +9,8 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
 
     const { _id, usersEmail, productId, quantity, dateAndTime } = myCartDataEach;
 
-    // const readable = dateAndTime.toLocaleString();
     const formattedDate = new Date(dateAndTime).toLocaleString();
     const navigate = useNavigate();
-
-    // console.log(_id, usersEmail, productId, quantity, dateAndTime);
 
     const [dataLoading, setDataLoading] = useState(true);
     const [eachProducts, setEachProducts] = useState({});
@@ -21,7 +18,10 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
     const fetchEachProduct = async (productId) => {
         setDataLoading(true);
         try {
-            const response = await fetch(`http://localhost:3000/allproducts/${productId}`);
+            const response = await fetch(`http://localhost:3000/allproducts/${productId}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
             const data = await response.json();
             setEachProducts(data);
         } catch (error) {
@@ -64,6 +64,7 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
                 // update total Available
                 fetch(`http://localhost:3000/allproducts/${productId}`, {
                     method: 'PATCH',
+                    credentials: 'include',
                     headers: {
                         'content-type': 'application/json'
                     },
@@ -76,7 +77,8 @@ const CartPageEach = ({ myCartDataEach, handleRemainingCart }) => {
                     })
 
                 fetch(`http://localhost:3000/orderProduct/${_id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    credentials: 'include',
                 })
                     .then(res => res.json())
                     .then(data => {

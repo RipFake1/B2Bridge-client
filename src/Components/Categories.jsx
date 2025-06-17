@@ -25,7 +25,7 @@ const Categories = () => {
     const fetchAllProducts = async () => {
         setDataLoading(true);
         try {
-            const response = await fetch('http://localhost:3000/allproducts');
+            const response = await fetch('http://localhost:3000/publicAllProducts');
             const data = await response.json();
             setProducts(data);
         } catch (error) {

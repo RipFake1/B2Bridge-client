@@ -27,19 +27,20 @@ const router = createBrowserRouter([
                 index: true,
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:3000/allproducts'),
+                loader: () => fetch('http://localhost:3000/publicAllProducts'),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/categories/:categoryName",
                 element: <Categories></Categories>,
-                // loader: ({ params }) => fetch(`http://localhost:3000/roommates/${params.id}`),
-                // hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/allProducts/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`, {
+                    method: 'GET',
+                    credentials: 'include',
+                }),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
@@ -49,25 +50,37 @@ const router = createBrowserRouter([
             {
                 path: "/allProducts",
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/allproducts'),
+                loader: () => fetch('http://localhost:3000/allproducts', {
+                    method: 'GET',
+                    credentials: 'include',
+                }),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/updateProduct/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:3000/allproducts/${params.id}`, {
+                    method: 'GET',
+                    credentials: 'include',
+                }),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/myProducts",
                 element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/allproducts'),
+                loader: () => fetch('http://localhost:3000/allproducts', {
+                    method: 'GET',
+                    credentials: 'include',
+                }),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: "/cart",
                 element: <PrivateRoute><CartPage></CartPage></PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/orderProduct'),
+                loader: () => fetch('http://localhost:3000/orderProduct', {
+                    method: 'GET',
+                    credentials: 'include',
+                }),
                 hydrateFallbackElement: <Loading></Loading>,
             },
             {
