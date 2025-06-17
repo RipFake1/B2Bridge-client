@@ -24,6 +24,8 @@ In this Web App, you can post a product for sale and also buy a product.
 - In the All Product page, users can see all the available products for sale.
 - Users can also edit their products.
 - An error page will display if the page is not available or an error occurs for a better user experience.
+- JWT was used for securing all private pages and verifying user identity in protected routes.
+
 
 ## npm packages in Client Side
 
@@ -41,6 +43,7 @@ In this Web App, you can post a product for sale and also buy a product.
 - Uses [react-tooltip](https://react-tooltip.com/) for adding customizable, accessible, and interactive tooltips to React components and elements.
 - Uses [react-helmet-async](https://www.npmjs.com/package/react-helmet-async) for for managing dynamic changes to the document head (like title, meta tags) in React.
 - Uses [motion](https://motion.dev/) to add smooth, declarative animations and transitions to React components with minimal code.
+- Uses [Axios](https://axios-http.com/) for making HTTP requests from client to server. 
 - Uses [Netlify](https://www.netlify.com/) for deploys, hosts websites. 
 
 
